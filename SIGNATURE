@@ -1,0 +1,51 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.73.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 b9d3eaa05aeb5c9f83f15468b316bc5229b9cd9e Changes
+SHA1 f83a2295d49d3a9ef3041a98bf11784b6bcaab02 INSTALL
+SHA1 b94f06af32c2cebe5696645fe2a782b88b5b6f40 LICENSE
+SHA1 b57065fe0a573b17cfe1a593f286791c06ee7118 MANIFEST
+SHA1 d8ded6621a42b94559d4a8f1c2f8bd64485d6f83 META.json
+SHA1 a7abf2d160118f95dadfd2b125d466b83e12f4f2 META.yml
+SHA1 743d5920da2a9b27537def64a6d6f1a35e42520e Makefile.PL
+SHA1 ab52e0481050d759ef3207139e1762d74e7911a1 README
+SHA1 447e7f6a91e48bc37ac01f11ced4eb0cbe3aee3a cpanfile
+SHA1 f57da7cff9bd6017a4510925063e430c110fb495 dist.ini
+SHA1 cbb57f15c2df97707db8cc9f7e6217c4f3c03a35 examples/nasmtp.pl
+SHA1 5eb894ed7aa81705917956db56d228fc4f867009 lib/Protocol/SMTP.pm
+SHA1 bee8095685f39ab039fb7020f2494d8b8da6b876 lib/Protocol/SMTP/Client.pm
+SHA1 985d9ded8d8ed7e344a09e52b1402e878e91da28 t/00-check-deps.t
+SHA1 d0496a37f82987cfcf3000a2f6433d68d1b5fbc5 t/00-compile.t
+SHA1 c56cb3bc847e512dcec236c309f4e0b6455c3dc0 xt/author/test-eol.t
+SHA1 198d1665317c3d91e3bb81f0a3b8dad8d4d66f20 xt/release/common_spelling.t
+SHA1 c6c3c9f7fe12058b4771449dff874b1c450c982c xt/release/mojibake.t
+SHA1 b7765bceaa12210a7ca4da2a4bb4aef53812be9c xt/release/new-version.t
+SHA1 a6d8370909ec0e0755d4bd691eb81d722cf94430 xt/release/pod-coverage.t
+SHA1 296928dbbcaffd1514ccc9b77a1e6e03cfe9b068 xt/release/pod-syntax.t
+SHA1 fd1fa776fca35fc8f1bdd24ee3fbaa1eca755a44 xt/release/synopsis.t
+SHA1 bbcd59d081d9940af5d43337ae85458075933829 xt/release/test-version.t
+SHA1 ec3f84bfd7a9ce3246e7592f4134100c6b5ce02b xt/release/unused-vars.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.12 (GNU/Linux)
+
+iQEcBAEBAgAGBQJTU+e4AAoJEFKElMNpjtyDwloIAM319Ja6354RN++hKSXT/MqA
+tpqAT2k4ryaMu8DVU+PzkMh2WAMNEl4XmvYVBOE5o2jDzEs5aqyHyVAx+EUMyfmi
+Y5E5H6/vngLBeOiR7b9vuAe5cl5palXk2PLKQdjYobtgn17omyEyeCFuRuDCENXV
+lbl2KO24gjdBLc53BdliJo/gQzwwB513P1BG/Qo4it9a5tNXIZowLmKiEUbrBBE2
+S2G1+snWCeTTMpp/kap3fBcrgVxKPaYYrlHCiegAWM0bmJWquTqKeLNew0ba6keN
+qx5aDQHx1rRGcBp5PLtT2E7+Vs4Asr56t5Es67sY6oWmdRxCpFLysj6swhr9K/0=
+=GPmE
+-----END PGP SIGNATURE-----
