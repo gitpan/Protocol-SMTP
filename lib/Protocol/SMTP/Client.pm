@@ -1,5 +1,5 @@
 package Protocol::SMTP::Client;
-$Protocol::SMTP::Client::VERSION = '0.001';
+$Protocol::SMTP::Client::VERSION = '0.002';
 use strict;
 use warnings;
 use utf8;
@@ -17,7 +17,7 @@ Protocol::SMTP::Client - abstract client support for mail sending
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 DESCRIPTION
 
@@ -38,6 +38,7 @@ Takes no parameters.
 sub new {
 	my $class = shift;
 	my $self = bless {@_}, $class;
+	$self->{auth_methods} = [];
 	$self->{task_queue} = [];
 	$self->{multi} = [];
 	$self
@@ -266,14 +267,18 @@ sub send_mail {
 	# just yet.
 	my @mail = split /\x0D\x0A/, $args{data};
 
-	$self->write_line(q{MAIL FROM:<} . $args{from} . '> BODY=' . $self->body_encoding);
+	{
+		my $mail_line = 'MAIL FROM:<' . $args{from} . '>';
+		$mail_line .= ' BODY=' . $self->body_encoding if $self->body_encoding;
+		$self->write_line($mail_line);
+	}
 	$self->wait_for(250)
 	->then(sub {
 		fmap_void {
 			$self->write_line(q{RCPT TO:<} . shift . q{>});
 			# Each recipient line should be acknowledged with 250 if valid.
 			$self->wait_for(250)
-		} foreach => \@recipient;
+		} foreach => \@recipient
 	})->then(sub {
 		$self->write_line(q{DATA});
 		$self->wait_for(354)
@@ -287,11 +292,11 @@ sub send_mail {
 		} generate => sub {
 			return unless @mail;
 			shift @mail
-		})->then(sub {
-			$self->{sending_content} = 0;
-			$self->write_line('.');
-			$self->wait_for(250)
-		});
+		})
+	})->then(sub {
+		$self->{sending_content} = 0;
+		$self->write_line('.');
+		$self->wait_for(250)
 	});
 }
 
@@ -433,8 +438,10 @@ sub handle_line {
 	if($multi eq ' ') {
 		my $task = shift @{$self->{pending}};
 		if($task->[0] == $code) {
+			$self->debug_printf("Applying line [$_] for multi-line task") for @{$self->{multi}};
 			$task->[1]->done(@{$self->{multi}});
 		} else {
+			$self->debug_printf("We had an unexpected code - $code instead of " . $task->[0]);
 			$task->[1]->fail($code => $remainder, 'expected ' . $task->[0]);
 		}
 		$self->{multi} = [];

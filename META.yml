@@ -7,6 +7,7 @@ build_requires:
   IO::Handle: '0'
   IPC::Open3: '0'
   Test::CheckDeps: '0.010'
+  Test::Fatal: '0'
   Test::More: '0.98'
   perl: '5.010001'
 configure_requires:
@@ -27,4 +28,4 @@ requires:
 resources:
   bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Protocol-SMTP
   homepage: http://search.cpan.org/dist/Protocol-SMTP/
-version: '0.001'
+version: '0.002'

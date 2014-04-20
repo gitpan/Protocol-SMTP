@@ -32,9 +32,10 @@ my %WriteMakefileArgs = (
     "IO::Handle" => 0,
     "IPC::Open3" => 0,
     "Test::CheckDeps" => "0.010",
+    "Test::Fatal" => 0,
     "Test::More" => "0.98"
   },
-  "VERSION" => "0.001",
+  "VERSION" => "0.002",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -49,6 +50,7 @@ my %FallbackPrereqs = (
   "IPC::Open3" => 0,
   "MIME::Base64" => 0,
   "Test::CheckDeps" => "0.010",
+  "Test::Fatal" => 0,
   "Test::More" => "0.98",
   "curry" => 0,
   "parent" => 0
